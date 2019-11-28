@@ -1,0 +1,9 @@
+{
+  "extends": ["airbnb"],
+  "plugins": [],
+  "rules": {},
+  "env": {
+    "browser": true
+  },
+  "settings": {}
+}

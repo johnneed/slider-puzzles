@@ -1,0 +1,959 @@
+body {
+    padding: 2rem;
+    font-family: 'Space Mono', monospace;
+    background-color: #2E2F2F;
+    color: #AAA;
+}
+
+section {
+    border: solid 1px #393939;
+    margin: 0 auto 1rem auto;
+    padding: 1rem;
+    box-shadow: 0 11px 14px -12px rgba(20, 20, 40, 0.5);
+    max-width: 40rem;
+    text-align: center;
+    background-color: #313232;
+}
+
+button {
+    font-size: 1.4rem;
+    cursor: pointer;
+    background-color: #353535;
+    padding: 0.5rem 1.3rem;
+    border: 1px;
+    color: #AAA;
+    transition: color 0.25s, box-shadow 0.25s, background-color 0.25s;
+    outline: none;
+    font-family: 'Space Mono', monospace;
+    vertical-align: middle;
+}
+
+button:hover,
+button:focus {
+    color: #DDD;
+    background-color: #404040;
+    box-shadow: 0 11px 14px -12px rgba(20, 20, 40, 0.75);
+}
+
+input[type="text"],
+input[type="number"] {
+    min-width: 2rem;
+    font-size: 1rem;
+    background-color: #383838;
+    color: #AAA;
+    border: solid 1px #353535;
+    outline: none;
+    padding: 0.2rem;
+    display: inline-block;
+    transition: background 0.25s, border 0.25s, box-shadow 0.25s, color 0.25s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="text"]:hover,
+input[type="number"]:hover {
+    color: #DDD;
+    background-color: #404040;
+    border: solid 1px #595959;
+    box-shadow: 0 11px 14px -12px rgba(20, 20, 40, 0.75);
+}
+
+.back-state-button {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    font-family: "Arial Black";
+    font-weight: bold;
+}
+
+.forward-state-button {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    font-family: "Arial Black";
+    font-weight: bold;
+}
+
+.new-sequence-label {
+    display: block;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+.new-sequence-label small {
+    font-size: 0.7rem;
+}
+
+.new-sequence-label span:first-child {
+    display: inline-block;
+    text-align: right;
+}
+
+.state-label {
+    display: block;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.state-label span:first-child {
+    display: inline-block;
+    min-width: 6rem;
+    text-align: right;
+}
+
+.state-index {
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    border-bottom: solid 1px #393939;
+    box-shadow: 0 1px 0 #272727;
+}
+
+h1 {
+    text-align: center;
+    margin: 0 0 1rem 0;
+    padding-bottom: 1rem;
+    border-bottom: solid 1px #393939;
+    box-shadow: 0 1px 0 #272727;
+}
+
+.puzzle-completed {
+    visibility: hidden;
+    text-align: center;
+}
+
+.puzzle-completed.is-complete {
+    visibility: visible;
+}
+
+.puzzle {
+    box-sizing: content-box;
+    margin: 0 auto;
+    box-shadow: 0 11px 14px -12px rgba(20, 20, 40, 0.5);
+    border: solid 1px #393939;
+    position: relative;
+    margin-bottom: 2rem;
+    background-color: #EEE;
+}
+
+.puzzle-piece {
+    height: 98px;
+    width: 98px;
+    cursor: pointer;
+    border: solid 1px #494949;
+    position: absolute;
+    transition: top 1s, left 1s, border-color 0.5s;
+    background-repeat: no-repeat;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/dc/Young_cats.jpg");
+}
+
+.puzzle-piece:hover {
+    border-color: #AAA;
+}
+
+.puzzle-3 {
+    width: 300px;
+    height: 300px;
+}
+
+.puzzle-3 .puzzle-piece {
+    background-size: auto 300px;
+}
+
+.puzzle-3 .position-1 {
+    left: 0px;
+    top: 0px;
+}
+
+.puzzle-3 #puzzlePiece1 {
+    background-position: 0px 0px;
+}
+
+.puzzle-3 .position-2 {
+    left: 100px;
+    top: 0px;
+}
+
+.puzzle-3 #puzzlePiece2 {
+    background-position: -100px 0px;
+}
+
+.puzzle-3 .position-3 {
+    left: 200px;
+    top: 0px;
+}
+
+.puzzle-3 #puzzlePiece3 {
+    background-position: -200px 0px;
+}
+
+.puzzle-3 .position-4 {
+    left: 0px;
+    top: 100px;
+}
+
+.puzzle-3 #puzzlePiece4 {
+    background-position: 0px -100px;
+}
+
+.puzzle-3 .position-5 {
+    left: 100px;
+    top: 100px;
+}
+
+.puzzle-3 #puzzlePiece5 {
+    background-position: -100px -100px;
+}
+
+.puzzle-3 .position-6 {
+    left: 200px;
+    top: 100px;
+}
+
+.puzzle-3 #puzzlePiece6 {
+    background-position: -200px -100px;
+}
+
+.puzzle-3 .position-7 {
+    left: 0px;
+    top: 200px;
+}
+
+.puzzle-3 #puzzlePiece7 {
+    background-position: 0px -200px;
+}
+
+.puzzle-3 .position-8 {
+    left: 100px;
+    top: 200px;
+}
+
+.puzzle-3 #puzzlePiece8 {
+    background-position: -100px -200px;
+}
+
+.puzzle-3 .position-9 {
+    left: 200px;
+    top: 200px;
+}
+
+.puzzle-3 #puzzlePiece9 {
+    background-position: -200px -200px;
+}
+
+.puzzle-4 {
+    width: 400px;
+    height: 400px;
+}
+
+.puzzle-4 .puzzle-piece {
+    background-size: auto 400px;
+}
+
+.puzzle-4 .position-1 {
+    left: 0px;
+    top: 0px;
+}
+
+.puzzle-4 #puzzlePiece1 {
+    background-position: 0px 0px;
+}
+
+.puzzle-4 .position-2 {
+    left: 100px;
+    top: 0px;
+}
+
+.puzzle-4 #puzzlePiece2 {
+    background-position: -100px 0px;
+}
+
+.puzzle-4 .position-3 {
+    left: 200px;
+    top: 0px;
+}
+
+.puzzle-4 #puzzlePiece3 {
+    background-position: -200px 0px;
+}
+
+.puzzle-4 .position-4 {
+    left: 300px;
+    top: 0px;
+}
+
+.puzzle-4 #puzzlePiece4 {
+    background-position: -300px 0px;
+}
+
+.puzzle-4 .position-5 {
+    left: 0px;
+    top: 100px;
+}
+
+.puzzle-4 #puzzlePiece5 {
+    background-position: 0px -100px;
+}
+
+.puzzle-4 .position-6 {
+    left: 100px;
+    top: 100px;
+}
+
+.puzzle-4 #puzzlePiece6 {
+    background-position: -100px -100px;
+}
+
+.puzzle-4 .position-7 {
+    left: 200px;
+    top: 100px;
+}
+
+.puzzle-4 #puzzlePiece7 {
+    background-position: -200px -100px;
+}
+
+.puzzle-4 .position-8 {
+    left: 300px;
+    top: 100px;
+}
+
+.puzzle-4 #puzzlePiece8 {
+    background-position: -300px -100px;
+}
+
+.puzzle-4 .position-9 {
+    left: 0px;
+    top: 200px;
+}
+
+.puzzle-4 #puzzlePiece9 {
+    background-position: 0px -200px;
+}
+
+.puzzle-4 .position-10 {
+    left: 100px;
+    top: 200px;
+}
+
+.puzzle-4 #puzzlePiece10 {
+    background-position: -100px -200px;
+}
+
+.puzzle-4 .position-11 {
+    left: 200px;
+    top: 200px;
+}
+
+.puzzle-4 #puzzlePiece11 {
+    background-position: -200px -200px;
+}
+
+.puzzle-4 .position-12 {
+    left: 300px;
+    top: 200px;
+}
+
+.puzzle-4 #puzzlePiece12 {
+    background-position: -300px -200px;
+}
+
+.puzzle-4 .position-13 {
+    left: 0px;
+    top: 300px;
+}
+
+.puzzle-4 #puzzlePiece13 {
+    background-position: 0px -300px;
+}
+
+.puzzle-4 .position-14 {
+    left: 100px;
+    top: 300px;
+}
+
+.puzzle-4 #puzzlePiece14 {
+    background-position: -100px -300px;
+}
+
+.puzzle-4 .position-15 {
+    left: 200px;
+    top: 300px;
+}
+
+.puzzle-4 #puzzlePiece15 {
+    background-position: -200px -300px;
+}
+
+.puzzle-4 .position-16 {
+    left: 300px;
+    top: 300px;
+}
+
+.puzzle-4 #puzzlePiece16 {
+    background-position: -300px -300px;
+}
+
+.puzzle-5 {
+    width: 500px;
+    height: 500px;
+}
+
+.puzzle-5 .puzzle-piece {
+    background-size: auto 500px;
+}
+
+.puzzle-5 .position-1 {
+    left: 0px;
+    top: 0px;
+}
+
+.puzzle-5 #puzzlePiece1 {
+    background-position: 0px 0px;
+}
+
+.puzzle-5 .position-2 {
+    left: 100px;
+    top: 0px;
+}
+
+.puzzle-5 #puzzlePiece2 {
+    background-position: -100px 0px;
+}
+
+.puzzle-5 .position-3 {
+    left: 200px;
+    top: 0px;
+}
+
+.puzzle-5 #puzzlePiece3 {
+    background-position: -200px 0px;
+}
+
+.puzzle-5 .position-4 {
+    left: 300px;
+    top: 0px;
+}
+
+.puzzle-5 #puzzlePiece4 {
+    background-position: -300px 0px;
+}
+
+.puzzle-5 .position-5 {
+    left: 400px;
+    top: 0px;
+}
+
+.puzzle-5 #puzzlePiece5 {
+    background-position: -400px 0px;
+}
+
+.puzzle-5 .position-6 {
+    left: 0px;
+    top: 100px;
+}
+
+.puzzle-5 #puzzlePiece6 {
+    background-position: 0px -100px;
+}
+
+.puzzle-5 .position-7 {
+    left: 100px;
+    top: 100px;
+}
+
+.puzzle-5 #puzzlePiece7 {
+    background-position: -100px -100px;
+}
+
+.puzzle-5 .position-8 {
+    left: 200px;
+    top: 100px;
+}
+
+.puzzle-5 #puzzlePiece8 {
+    background-position: -200px -100px;
+}
+
+.puzzle-5 .position-9 {
+    left: 300px;
+    top: 100px;
+}
+
+.puzzle-5 #puzzlePiece9 {
+    background-position: -300px -100px;
+}
+
+.puzzle-5 .position-10 {
+    left: 400px;
+    top: 100px;
+}
+
+.puzzle-5 #puzzlePiece10 {
+    background-position: -400px -100px;
+}
+
+.puzzle-5 .position-11 {
+    left: 0px;
+    top: 200px;
+}
+
+.puzzle-5 #puzzlePiece11 {
+    background-position: 0px -200px;
+}
+
+.puzzle-5 .position-12 {
+    left: 100px;
+    top: 200px;
+}
+
+.puzzle-5 #puzzlePiece12 {
+    background-position: -100px -200px;
+}
+
+.puzzle-5 .position-13 {
+    left: 200px;
+    top: 200px;
+}
+
+.puzzle-5 #puzzlePiece13 {
+    background-position: -200px -200px;
+}
+
+.puzzle-5 .position-14 {
+    left: 300px;
+    top: 200px;
+}
+
+.puzzle-5 #puzzlePiece14 {
+    background-position: -300px -200px;
+}
+
+.puzzle-5 .position-15 {
+    left: 400px;
+    top: 200px;
+}
+
+.puzzle-5 #puzzlePiece15 {
+    background-position: -400px -200px;
+}
+
+.puzzle-5 .position-16 {
+    left: 0px;
+    top: 300px;
+}
+
+.puzzle-5 #puzzlePiece16 {
+    background-position: 0px -300px;
+}
+
+.puzzle-5 .position-17 {
+    left: 100px;
+    top: 300px;
+}
+
+.puzzle-5 #puzzlePiece17 {
+    background-position: -100px -300px;
+}
+
+.puzzle-5 .position-18 {
+    left: 200px;
+    top: 300px;
+}
+
+.puzzle-5 #puzzlePiece18 {
+    background-position: -200px -300px;
+}
+
+.puzzle-5 .position-19 {
+    left: 300px;
+    top: 300px;
+}
+
+.puzzle-5 #puzzlePiece19 {
+    background-position: -300px -300px;
+}
+
+.puzzle-5 .position-20 {
+    left: 400px;
+    top: 300px;
+}
+
+.puzzle-5 #puzzlePiece20 {
+    background-position: -400px -300px;
+}
+
+.puzzle-5 .position-21 {
+    left: 0px;
+    top: 400px;
+}
+
+.puzzle-5 #puzzlePiece21 {
+    background-position: 0px -400px;
+}
+
+.puzzle-5 .position-22 {
+    left: 100px;
+    top: 400px;
+}
+
+.puzzle-5 #puzzlePiece22 {
+    background-position: -100px -400px;
+}
+
+.puzzle-5 .position-23 {
+    left: 200px;
+    top: 400px;
+}
+
+.puzzle-5 #puzzlePiece23 {
+    background-position: -200px -400px;
+}
+
+.puzzle-5 .position-24 {
+    left: 300px;
+    top: 400px;
+}
+
+.puzzle-5 #puzzlePiece24 {
+    background-position: -300px -400px;
+}
+
+.puzzle-5 .position-25 {
+    left: 400px;
+    top: 400px;
+}
+
+.puzzle-5 #puzzlePiece25 {
+    background-position: -400px -400px;
+}
+
+.puzzle-6 {
+    width: 600px;
+    height: 600px;
+}
+
+.puzzle-6 .puzzle-piece {
+    background-size: auto 600px;
+}
+
+.puzzle-6 .position-1 {
+    left: 0px;
+    top: 0px;
+}
+
+.puzzle-6 #puzzlePiece1 {
+    background-position: 0px 0px;
+}
+
+.puzzle-6 .position-2 {
+    left: 100px;
+    top: 0px;
+}
+
+.puzzle-6 #puzzlePiece2 {
+    background-position: -100px 0px;
+}
+
+.puzzle-6 .position-3 {
+    left: 200px;
+    top: 0px;
+}
+
+.puzzle-6 #puzzlePiece3 {
+    background-position: -200px 0px;
+}
+
+.puzzle-6 .position-4 {
+    left: 300px;
+    top: 0px;
+}
+
+.puzzle-6 #puzzlePiece4 {
+    background-position: -300px 0px;
+}
+
+.puzzle-6 .position-5 {
+    left: 400px;
+    top: 0px;
+}
+
+.puzzle-6 #puzzlePiece5 {
+    background-position: -400px 0px;
+}
+
+.puzzle-6 .position-6 {
+    left: 500px;
+    top: 0px;
+}
+
+.puzzle-6 #puzzlePiece6 {
+    background-position: -500px 0px;
+}
+
+.puzzle-6 .position-7 {
+    left: 0px;
+    top: 100px;
+}
+
+.puzzle-6 #puzzlePiece7 {
+    background-position: 0px -100px;
+}
+
+.puzzle-6 .position-8 {
+    left: 100px;
+    top: 100px;
+}
+
+.puzzle-6 #puzzlePiece8 {
+    background-position: -100px -100px;
+}
+
+.puzzle-6 .position-9 {
+    left: 200px;
+    top: 100px;
+}
+
+.puzzle-6 #puzzlePiece9 {
+    background-position: -200px -100px;
+}
+
+.puzzle-6 .position-10 {
+    left: 300px;
+    top: 100px;
+}
+
+.puzzle-6 #puzzlePiece10 {
+    background-position: -300px -100px;
+}
+
+.puzzle-6 .position-11 {
+    left: 400px;
+    top: 100px;
+}
+
+.puzzle-6 #puzzlePiece11 {
+    background-position: -400px -100px;
+}
+
+.puzzle-6 .position-12 {
+    left: 500px;
+    top: 100px;
+}
+
+.puzzle-6 #puzzlePiece12 {
+    background-position: -500px -100px;
+}
+
+.puzzle-6 .position-13 {
+    left: 0px;
+    top: 200px;
+}
+
+.puzzle-6 #puzzlePiece13 {
+    background-position: 0px -200px;
+}
+
+.puzzle-6 .position-14 {
+    left: 100px;
+    top: 200px;
+}
+
+.puzzle-6 #puzzlePiece14 {
+    background-position: -100px -200px;
+}
+
+.puzzle-6 .position-15 {
+    left: 200px;
+    top: 200px;
+}
+
+.puzzle-6 #puzzlePiece15 {
+    background-position: -200px -200px;
+}
+
+.puzzle-6 .position-16 {
+    left: 300px;
+    top: 200px;
+}
+
+.puzzle-6 #puzzlePiece16 {
+    background-position: -300px -200px;
+}
+
+.puzzle-6 .position-17 {
+    left: 400px;
+    top: 200px;
+}
+
+.puzzle-6 #puzzlePiece17 {
+    background-position: -400px -200px;
+}
+
+.puzzle-6 .position-18 {
+    left: 500px;
+    top: 200px;
+}
+
+.puzzle-6 #puzzlePiece18 {
+    background-position: -500px -200px;
+}
+
+.puzzle-6 .position-19 {
+    left: 0px;
+    top: 300px;
+}
+
+.puzzle-6 #puzzlePiece19 {
+    background-position: 0px -300px;
+}
+
+.puzzle-6 .position-20 {
+    left: 100px;
+    top: 300px;
+}
+
+.puzzle-6 #puzzlePiece20 {
+    background-position: -100px -300px;
+}
+
+.puzzle-6 .position-21 {
+    left: 200px;
+    top: 300px;
+}
+
+.puzzle-6 #puzzlePiece21 {
+    background-position: -200px -300px;
+}
+
+.puzzle-6 .position-22 {
+    left: 300px;
+    top: 300px;
+}
+
+.puzzle-6 #puzzlePiece22 {
+    background-position: -300px -300px;
+}
+
+.puzzle-6 .position-23 {
+    left: 400px;
+    top: 300px;
+}
+
+.puzzle-6 #puzzlePiece23 {
+    background-position: -400px -300px;
+}
+
+.puzzle-6 .position-24 {
+    left: 500px;
+    top: 300px;
+}
+
+.puzzle-6 #puzzlePiece24 {
+    background-position: -500px -300px;
+}
+
+.puzzle-6 .position-25 {
+    left: 0px;
+    top: 400px;
+}
+
+.puzzle-6 #puzzlePiece25 {
+    background-position: 0px -400px;
+}
+
+.puzzle-6 .position-26 {
+    left: 100px;
+    top: 400px;
+}
+
+.puzzle-6 #puzzlePiece26 {
+    background-position: -100px -400px;
+}
+
+.puzzle-6 .position-27 {
+    left: 200px;
+    top: 400px;
+}
+
+.puzzle-6 #puzzlePiece27 {
+    background-position: -200px -400px;
+}
+
+.puzzle-6 .position-28 {
+    left: 300px;
+    top: 400px;
+}
+
+.puzzle-6 #puzzlePiece28 {
+    background-position: -300px -400px;
+}
+
+.puzzle-6 .position-29 {
+    left: 400px;
+    top: 400px;
+}
+
+.puzzle-6 #puzzlePiece29 {
+    background-position: -400px -400px;
+}
+
+.puzzle-6 .position-30 {
+    left: 500px;
+    top: 400px;
+}
+
+.puzzle-6 #puzzlePiece30 {
+    background-position: -500px -400px;
+}
+
+.puzzle-6 .position-31 {
+    left: 0px;
+    top: 500px;
+}
+
+.puzzle-6 #puzzlePiece31 {
+    background-position: 0px -500px;
+}
+
+.puzzle-6 .position-32 {
+    left: 100px;
+    top: 500px;
+}
+
+.puzzle-6 #puzzlePiece32 {
+    background-position: -100px -500px;
+}
+
+.puzzle-6 .position-33 {
+    left: 200px;
+    top: 500px;
+}
+
+.puzzle-6 #puzzlePiece33 {
+    background-position: -200px -500px;
+}
+
+.puzzle-6 .position-34 {
+    left: 300px;
+    top: 500px;
+}
+
+.puzzle-6 #puzzlePiece34 {
+    background-position: -300px -500px;
+}
+
+.puzzle-6 .position-35 {
+    left: 400px;
+    top: 500px;
+}
+
+.puzzle-6 #puzzlePiece35 {
+    background-position: -400px -500px;
+}
+
+.puzzle-6 .position-36 {
+    left: 500px;
+    top: 500px;
+}
+
+.puzzle-6 #puzzlePiece36 {
+    background-position: -500px -500px;
+}

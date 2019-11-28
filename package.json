@@ -1,0 +1,22 @@
+{
+  "name": "slider-puzzles",
+  "version": "1.0.0",
+  "description": "A small slider puzzle app to demonstrate invariant state.",
+  "main": "slider-puzzles.js",
+  "repository": "https://github.com/johnneed/slider-puzzles.git",
+  "author": "John Need <johnneed@johnneed.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./index"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.1",
+    "open": "^7.0.0",
+    "serve": "^11.2.0",
+    "serve-handler": "^6.1.2"
+  },
+  "dependencies": {
+    "eslint-config-airbnb": "^18.0.1",
+    "ramda": "^0.26.1"
+  }
+}
