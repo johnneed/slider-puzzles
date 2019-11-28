@@ -21,4 +21,4 @@ or
 The app should open in your browser at http://localhost:3000
 
 
-Check out the demo at https://codepen.io/johnneed/pen/peYWzB
+Check out the demo at https://codepen.io/johnneed/full/peYWzB
